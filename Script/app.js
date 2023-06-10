@@ -1,15 +1,32 @@
 $(document).ready(getStarted);
 let totalMonthly = 0;
+let firstNameVal;
+let lastNameVal;
+let IDVal;
+let titleVal;
+let annaulSalaryVal;
+let updateTotalMonth;
+let tableSalary = {
+  firstNameValue: firstNameVal,
+  lastNameValue: lastNameVal,
+  IDValue: IDVal,
+  titleValue: titleVal,
+  annaulSalaryValue: annaulSalaryVal,
+  totalMonthValue: totalMonthly,
+};
+
 function getStarted() {
   console.log("Get started");
   $("#submit-btn").on("click", submitHandler);
 
   // Total Monthly
-  totalMonthly = Number($("#total-monthly").text());
-  console.log('Total Monthly inside getStarted', totalMonthly);
+  tableSalary.totalMonthValue = Number($("#total-monthly").text());
 
+  // Update the total month
+  // tableSalary.totalMonthValue = Number($("#total-monthly").text(updateTotalMonth));
+  // console.log('Update Total in getStarted:', updateTotalMonth);
   // Remove the Employee
-  $('#content').on('click', '.delete', deleteHandler);
+  $("#content").on("click", ".delete", deleteHandler);
 }
 // ***********************************************************
 // ****************** PLAN/PSEUDO CODE ******************** //
@@ -17,44 +34,40 @@ function getStarted() {
 // ✅ Add in the HTML Elements and format.
 // ✅Add ID for the Inputs and submit
 /* Have a function to for adding all of the inputs */
-  //✅ Add event Listener for submit button and add the function 
-  //✅ Test the console log
-  //✅ Get all the value for the first name,last name, id, title, and annual salary
-  //✅ Console log all the data
-  //✅ Empty the values after submited
-  //✅ Dispaly and append the data in a table
-  //✅ Start with global for the total Monthly and divide by 12
-  //✅ Add up all the data for Annual salary and / 12.May need to figure it out by adding in the function or ready now function ?
-  //✅ Console log the total Monthy varable
+//✅ Add event Listener for submit button and add the function
+//✅ Test the console log
+//✅ Get all the value for the first name,last name, id, title, and annual salary
+//✅ Console log all the data
+//✅ Empty the values after submited
+//✅ Dispaly and append the data in a table
+//✅ Start with global for the total Monthly and divide by 12
+//✅ Add up all the data for Annual salary and / 12.May need to figure it out by adding in the function or ready now function ?
+//✅ Console log the total Monthy varable
+//✅ Change the Monthly after it exceed $20,000. Need to use if statement and get the css method.
 /* Have a function to delete the employees */
-  //✅ First console log if the button is being clicked
-  //✅ Have a delegation to target the tbody
-  //✅ Target the parents to delete them all.
-  // Decrease the monthly
-  // * Once everthing works style it to make it look nice!  
+//✅ First console log if the button is being clicked
+//✅ Have a delegation to target the tbody
+//✅ Target the parents to delete them all.
+// Decrease the monthly
+//✅ * Once everthing works style it to make it look nice!
 
 function submitHandler(e) {
   e.preventDefault();
   console.log("Submit");
 
   //********* Get all the Values and log them ********* //
-  let firstNameVal = $("#first-name").val();
-  console.log("first name:", firstNameVal);
+  tableSalary.firstNameValue = $("#first-name").val();
 
-  let lastNameVal = $("#last-name").val();
-  console.log("last name:", lastNameVal);
+  tableSalary.lastNameValue = $("#last-name").val();
 
-  let IDVal = $("#NumID").val();
-  console.log("ID:", IDVal);
+  tableSalary.IDValue = $("#NumID").val();
 
-  let titleVal = $("#title").val();
-  console.log("title:", titleVal);
+  tableSalary.titleValue = $("#title").val();
 
-  let annualSalaryVal = $("#annual-salary").val();
-  console.log("annual salary:", annualSalaryVal);
+  tableSalary.annaulSalaryValue = $("#annual-salary").val();
 
-  totalMonthly = annualSalaryVal / 12;
-  console.log('totally Montly inside submitHandler', totalMonthly);
+  tableSalary.totalMonthValue = tableSalary.annaulSalaryValue / 12;
+
   // Change the color in even but still in progress. Have to target since it prints a new row each time
   // $( ".row:nth-child(even)" ).css('background-color', 'black' );
 
@@ -65,29 +78,41 @@ function submitHandler(e) {
   $("#title").val("");
   $("#annual-salary").val("");
 
-  if(totalMonthly > 20000){
-    $('#total-monthly').css('color', 'red');
+  if (tableSalary.totalMonthValue > 20000) {
+    $("#total-monthly").css("color", "red");
   }
   //********* Total Monthly ********* //
-  $("#total-monthly").text(totalMonthly);
- //********* Append the data or display in the DOM ********* //
+  $("#total-monthly").text(tableSalary.totalMonthValue);
+  //********* Append the data or display in the DOM ********* //
   $("#content").append(`
   <tr class="row">          
-    <td class="data">${firstNameVal}</td>
-    <td class="data">${lastNameVal}</td>
-    <td class="data">${IDVal}</td>
-    <td class="data">${titleVal}</td>
-    <td class="data">${annualSalaryVal}</td>
+    <td class="data">${tableSalary.firstNameValue}</td>
+    <td class="data">${tableSalary.lastNameValue}</td>
+    <td class="data">${tableSalary.IDValue}</td>
+    <td class="data">${tableSalary.titleValue}</td>
+    <td class="data">${tableSalary.annaulSalaryValue}</td>
     <td class="data"><button class="delete">Delete</button></td>
   </tr>
   `);
+  console.log("Table:", tableSalary);
 }
 
-function deleteHandler(){
-  console.log('delete');
+function deleteHandler() {
   //********* Total Monthly ********* //
-  console.log('total in delete', totalMonthly)
-   $("#total-monthly").text(totalMonthly);
-  $(this).parent().parent().remove();
-}
+  // Trying to figuere out what gets deleted
+  console.log("table in delete", tableSalary);
 
+  tableSalary.annaulSalaryValue = $("#total-monthly").text();
+  console.log("delete", tableSalary.totalMonthValue);
+
+  // I THINK WE HAVE TO UPDATE THE TOTAL MONTH HERE
+  // let update = $("#total-monthly").text(updateTotalMonth);
+  updateTotalMonth = tableSalary.annaulSalaryValue--;
+  console.log("update", updateTotalMonth);
+  // REMOVE 
+  $(this).parent().parent().remove();
+  $("#total-monthly").remove();
+  // Update
+  tableSalary.totalMonthValue = Number($("#total-monthly").text(updateTotalMonth));
+  console.log('Update Total in deleteHandler:', updateTotalMonth);
+}
