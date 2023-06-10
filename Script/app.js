@@ -65,7 +65,9 @@ function submitHandler(e) {
   $("#title").val("");
   $("#annual-salary").val("");
 
-
+  if(totalMonthly > 20000){
+    $('#total-monthly').css('color', 'red');
+  }
   //********* Total Monthly ********* //
   $("#total-monthly").text(totalMonthly);
  //********* Append the data or display in the DOM ********* //
