@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight: 100;
 }
 header h1{
   background-color: rgb(107, 107, 107);
@@ -11,3 +12,55 @@ header h1{
   align-items: center;
   padding: 2.5rem 0;
 }
+.main-heading{
+  margin: 2rem 0 2rem 17rem;
+  font-size: 1.8rem;
+  
+}
+
+form div{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+input{
+ padding: 5px 10px;
+ border-color: #000;
+}
+.flex-end{
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 18rem 0 0;
+}
+#submit-btn{
+  padding: 0 2rem;
+}
+
+
+/* Table */
+ table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+th, .data{
+  font-size: 1.4rem;
+  padding: 10px 79px 10px 3px;
+  border: 1px solid #000;
+  background-color: rgb(192, 192, 192);
+  text-align: left;
+}
+
+.employee{
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem 17rem;
+}
+/* It doesnt change the BG in css or in JQ ? */
+/* .row:nth-child(even){
+  background-color: green;
+} */
+
+

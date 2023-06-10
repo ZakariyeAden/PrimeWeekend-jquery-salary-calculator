@@ -3,8 +3,13 @@ let totalMonthly = 0;
 function getStarted() {
   console.log("Get started");
   $("#submit-btn").on("click", submitHandler);
+
+  // Total Monthly
   totalMonthly = Number($("#total-monthly").text());
   console.log('Total Monthly inside getStarted', totalMonthly);
+
+  // Remove the Employee
+  $('#content').on('click', '.delete', deleteHandler);
 }
 // ***********************************************************
 // ****************** PLAN/PSEUDO CODE ******************** //
@@ -22,9 +27,10 @@ function getStarted() {
   //✅ Add up all the data for Annual salary and / 12.May need to figure it out by adding in the function or ready now function ?
   //✅ Console log the total Monthy varable
 /* Have a function to delete the employees */
-  // First console log if the button is being clicked
-  // Have a delegation to target the tbody
-  // Target the parents to delete them all.
+  //✅ First console log if the button is being clicked
+  //✅ Have a delegation to target the tbody
+  //✅ Target the parents to delete them all.
+  // Decrease the monthly
   // * Once everthing works style it to make it look nice!  
 
 function submitHandler(e) {
@@ -49,7 +55,9 @@ function submitHandler(e) {
 
   totalMonthly = annualSalaryVal / 12;
   console.log('totally Montly inside submitHandler', totalMonthly);
-  
+  // Change the color in even but still in progress. Have to target since it prints a new row each time
+  // $( ".row:nth-child(even)" ).css('background-color', 'black' );
+
   //********* Empty the values ********* //
   $("#first-name").val("");
   $("#last-name").val("");
@@ -57,17 +65,27 @@ function submitHandler(e) {
   $("#title").val("");
   $("#annual-salary").val("");
 
+
   //********* Total Monthly ********* //
   $("#total-monthly").text(totalMonthly);
  //********* Append the data or display in the DOM ********* //
   $("#content").append(`
-  <tr>          
-    <td>${firstNameVal}</td>
-    <td>${lastNameVal}</td>
-    <td>${IDVal}</td>
-    <td>${titleVal}</td>
-    <td>${annualSalaryVal}</td>
+  <tr class="row">          
+    <td class="data">${firstNameVal}</td>
+    <td class="data">${lastNameVal}</td>
+    <td class="data">${IDVal}</td>
+    <td class="data">${titleVal}</td>
+    <td class="data">${annualSalaryVal}</td>
+    <td class="data"><button class="delete">Delete</button></td>
   </tr>
   `);
-  // <td><button class="delete">❌</button></td>
 }
+
+function deleteHandler(){
+  console.log('delete');
+  //********* Total Monthly ********* //
+  console.log('total in delete', totalMonthly)
+   $("#total-monthly").text(totalMonthly);
+  $(this).parent().parent().remove();
+}
+

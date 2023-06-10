@@ -16,17 +16,21 @@
   <main>
     
     <form>
-      <h4>Add Employee</h4>
-      <input placeholder="First Name" id="first-name" type="text"/>
-      <input placeholder="Last Name" id="last-name" type="text"/>
-      <input placeholder="ID" id="NumID" type="number"/>
-      <input placeholder="Title" id="title" type="text"/>
-      <input placeholder="Annual Salary" id="annual-salary" type="number"/>
-      <button id="submit-btn">Submit</button>
+      <h2 class="main-heading">Add Employee</h2>
+      <div>
+        <input placeholder="First Name" id="first-name" type="text"/>
+        <input placeholder="Last Name" id="last-name" type="text"/>
+        <input placeholder="ID" id="NumID" type="number"/>
+        <input placeholder="Title" id="title" type="text"/>
+        <input placeholder="Annual Salary" id="annual-salary" type="number"/>
+      </div>
+      <div class="flex-end">
+        <button id="submit-btn">Submit</button>
+      </div>
     </form>
 
+    <h4 class="employee">Employees</h4>
     <table>
-      <h4>Employees</h4>
       <thead>
         <tr>
           <th>First Name</th>
@@ -41,7 +45,9 @@
         
       </tbody>
     </table>
-    <h5>Total Monthly: <span id="total-monthly"></span></h5>
+    <div class="flex-end">
+      <h5 class="totalMonthly-heading">Total Monthly: <span id="total-monthly"></span></h5>
+    </div>
   </main>
 </body>
 </html>
