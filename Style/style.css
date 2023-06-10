@@ -53,14 +53,24 @@ th, .data{
   background-color: rgb(192, 192, 192);
   text-align: left;
 }
-
+.data{
+  padding: 10px 122px 10px 3px;
+  background-color: #fff;
+}
+.data{
+  padding: 10px 122px 10px 3px;
+  background-color: #fff;
+}
+.totalMonthly-heading{
+  font-size: 1.8rem;
+}
 .employee{
   font-size: 1.8rem;
   margin: 2rem 0 1rem 17rem;
 }
 /* It doesnt change the BG in css or in JQ ? */
-/* .row:nth-child(even){
-  background-color: green;
-} */
+.row:nth-child(2){
+  background-color: gray;
+}
 
 
