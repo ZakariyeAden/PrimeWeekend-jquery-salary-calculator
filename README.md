@@ -16,6 +16,6 @@ UPDATE:
 I have to refractor my code and put all my variables into objectit into object.Put the object up top and make it global. I feel like im close, its getting somewhere!I see what im suppose to do. I see what its doing the console.I think i need to target the id then it should work.
 
 UPDATE:
-I tried using the data method, I console what it returns and it give me an empty object. I tried another and feels like im getting close although I didnt I got very close and learned alot.I tried google how to decrease month and tried googling how to target the ID of the object.I tried looking for equation to see if it would help too.
+I tried using the data method, I console what it returns and it give me an empty object. I tried another method and feels like im getting close.I tried google how to decrease month, tried googling how to target the ID of the object.I tried looking for equation to see if it would help too.I didn't get to fix it before the due date although I had fun!
 
 Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
