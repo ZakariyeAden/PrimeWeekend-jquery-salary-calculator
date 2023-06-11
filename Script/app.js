@@ -48,6 +48,7 @@ function getStarted() {
 //✅ First console log if the button is being clicked
 //✅ Have a delegation to target the tbody
 //✅ Target the parents to delete them all.
+//✅ Have to use use an object in order to start on the monthly decrease
 // Decrease the monthly
 //✅ * Once everthing works style it to make it look nice!
 
@@ -67,6 +68,7 @@ function submitHandler(e) {
   tableSalary.annaulSalaryValue = $("#annual-salary").val();
 
   tableSalary.totalMonthValue = tableSalary.annaulSalaryValue / 12;
+  console.log('Montly in get Started:', tableSalary.totalMonthValue.toFixed(2));
 
   // Change the color in even but still in progress. Have to target since it prints a new row each time
   // $( ".row:nth-child(even)" ).css('background-color', 'black' );
@@ -79,7 +81,7 @@ function submitHandler(e) {
   $("#annual-salary").val("");
 
   if (tableSalary.totalMonthValue > 20000) {
-    $("#total-monthly").css("color", "red");
+    $("#total-monthly").css("background-color", "red");
   }
   //********* Total Monthly ********* //
   $("#total-monthly").text(tableSalary.totalMonthValue);
@@ -101,18 +103,17 @@ function deleteHandler() {
   //********* Total Monthly ********* //
   // Trying to figuere out what gets deleted
   console.log("table in delete", tableSalary);
+  console.log('totalMonth in delete',tableSalary.totalMonthValue);
 
-  tableSalary.annaulSalaryValue = $("#total-monthly").text();
-  console.log("delete", tableSalary.totalMonthValue);
-
+  
+  
   // I THINK WE HAVE TO UPDATE THE TOTAL MONTH HERE
-  // let update = $("#total-monthly").text(updateTotalMonth);
-  updateTotalMonth = tableSalary.annaulSalaryValue--;
-  console.log("update", updateTotalMonth);
+  updateTotalMonth = totalMonthly--;
   // REMOVE 
   $(this).parent().parent().remove();
-  $("#total-monthly").remove();
-  // Update
-  tableSalary.totalMonthValue = Number($("#total-monthly").text(updateTotalMonth));
-  console.log('Update Total in deleteHandler:', updateTotalMonth);
+  $("#total-monthly").remove(totalMonthly);
+  // Update ?
+  $("#total-monthly").text(updateTotalMonth);
+ 
+
 }
